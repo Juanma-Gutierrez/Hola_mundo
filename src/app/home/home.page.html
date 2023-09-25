@@ -9,13 +9,27 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Inicio</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <ion-button routerLink="/welcome">Welcome</ion-button>
+    <ion-button routerLink="/welcome">Ir a bienvenida</ion-button>
   </div>
 
-<app-user-info [nombre]="'Juan'" [apellidos]="'Gutiérrez'" [edad]="51"></app-user-info>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <app-user-info [nombre]="'Eddar'" [apellidos]="'Stark'" [edad]="51"></app-user-info>
+      </ion-col>
+      <ion-col>
+        <app-user-info [nombre]="'Robert'" [apellidos]="'Baratheon'" [edad]="61"></app-user-info>
+      </ion-col>
+      <ion-col>
+        <app-user-info [nombre]="'Jon'" [apellidos]="'Snow'" [edad]="43"></app-user-info>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
