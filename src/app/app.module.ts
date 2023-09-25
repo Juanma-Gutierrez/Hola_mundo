@@ -6,7 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { PrimeraLetraApellidoPipe } from './primera-letra-apellido.pipe';
+import { PrimeraLetraApellidoPipe } from './pipes/primera-letra-apellido.pipe';
 
 @NgModule({
   declarations: [AppComponent, PrimeraLetraApellidoPipe],
