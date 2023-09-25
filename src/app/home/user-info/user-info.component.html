@@ -1,18 +1,16 @@
 <ion-card>
   <ion-card-header>
-    <ion-grid>
-        <ion-row class="ion-align-items-center">
-            <ion-col>
-                <ion-img src="https://cdn-icons-png.flaticon.com/128/149/149071.png"></ion-img>
-            </ion-col>
-            <ion-col size="auto">
-                <ion-card-title>{{nombre}} {{apellidos|uppercase}}</ion-card-title>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-    <ion-card-subtitle>{{edad}} años</ion-card-subtitle>
+    <div class="avatar">
+        <ion-img src="https://cdn-icons-png.flaticon.com/128/149/149071.png"></ion-img>
+        <ion-card-title>{{nombre}} {{apellidos|uppercase}}</ion-card-title>
+    </div>
   </ion-card-header>
   <ion-card-content>
-    Contenido
+    <ion-card-subtitle class="info-usuario">Nombre</ion-card-subtitle>
+    <ion-card-subtitle class="valor-usuario">{{nombre}}</ion-card-subtitle>
+    <ion-card-subtitle class="info-usuario">Apellidos</ion-card-subtitle>
+    <ion-card-subtitle class="valor-usuario">{{apellidos}}</ion-card-subtitle>
+    <ion-card-subtitle class="info-usuario">Edad</ion-card-subtitle>
+    <ion-card-subtitle class="valor-usuario">{{edad}} años</ion-card-subtitle>
   </ion-card-content>
 </ion-card>

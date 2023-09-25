@@ -1,6 +1,22 @@
-ion-img{
-    width: 50px;
+.avatar{
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
-ion-card-title{
-    color: darkcyan;
+
+ion-img {
+  width: 50px;
 }
+
+ion-card-title {
+  color: darkcyan;
+}
+
+.valor-usuario {
+  margin-left: 20px;
+}
+
+.info-usuario{
+    color: rgb(137, 182, 197);
+}
+
