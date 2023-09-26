@@ -7,12 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UserInfoComponent  implements OnInit {
     @Input() usuario:{
+        id?:number,
         nombre?:string,
         apellidos?:string,
         edad?:number
     } = {}
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
 }

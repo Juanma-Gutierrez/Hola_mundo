@@ -1,13 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Inicio
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-button routerLink="/welcome">Ir a bienvenida</ion-button>
+  <ion-button routerLink="/welcome">Welcome</ion-button>
   <div class="tarjetas">
       <app-user-info *ngFor="let miUsuario of usuarios" [usuario]="miUsuario"></app-user-info>
   </div>

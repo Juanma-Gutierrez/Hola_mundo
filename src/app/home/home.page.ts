@@ -9,24 +9,27 @@ import {
 })
 export class HomePage {
   usuarios = [{
+      id: 1,
       nombre: "Eddar",
       apellidos: "Stark",
       edad: 52
     },
     {
-      nombre: "Robert",
+        id: 2,
+        nombre: "Robert",
       apellidos: "Baratheon",
       edad: 64
     },
     {
-        nombre:"Sansa",
-        apellidos: "Stark Lannister",
-        edad:24
-    },{
-        
-        nombre:"Cersei",
-        apellidos:"Lannister",
-        edad:41
+        id: 3,
+        nombre: "Sansa",
+      apellidos: "Stark Lannister",
+      edad: 24
+    }, {
+        id: 4,
+      nombre: "Cersei",
+      apellidos: "Lannister",
+      edad: 41
     }
   ]
   constructor() {}
