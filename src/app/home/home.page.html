@@ -8,25 +8,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-button routerLink="/welcome">Ir a bienvenida</ion-button>
-  <ion-grid class="tarjetas">
-    <ion-row>
-      <ion-col>
-        <app-user-info [nombre]="'Eddar'" [apellidos]="'Stark'" [edad]="51"></app-user-info>
-      </ion-col>
-      <ion-col>
-        <app-user-info [nombre]="'Robert'" [apellidos]="'Baratheon'" [edad]="62"></app-user-info>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <app-user-info [nombre]="'Jon'" [apellidos]="'Snow'" [edad]="43"></app-user-info>
-      </ion-col>
-      <ion-col>
-        <app-user-info [nombre]="'Robert'" [apellidos]="'Baratheon'" [edad]="62"></app-user-info>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-
-
+  <div class="tarjetas">
+      <app-user-info *ngFor="let miUsuario of usuarios" [usuario]="miUsuario"></app-user-info>
+  </div>
 </ion-content>

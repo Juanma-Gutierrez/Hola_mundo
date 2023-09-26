@@ -6,13 +6,13 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./user-info.component.scss'],
 })
 export class UserInfoComponent  implements OnInit {
-
-    @Input() nombre?: string
-    @Input() apellidos?: string
-    @Input() edad?:number
+    @Input() usuario:{
+        nombre?:string,
+        apellidos?:string,
+        edad?:number
+    } = {}
 
   constructor() { }
 
   ngOnInit() {}
-
 }

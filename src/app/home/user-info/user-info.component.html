@@ -2,15 +2,15 @@
   <ion-card-header>
     <div class="avatar">
         <ion-img src="https://cdn-icons-png.flaticon.com/128/149/149071.png"></ion-img>
-        <ion-card-title>{{nombre}} {{apellidos|uppercase}}</ion-card-title>
+        <ion-card-title>{{usuario.nombre}} {{usuario.apellidos|primeraLetraApellido}}</ion-card-title>
     </div>
   </ion-card-header>
   <ion-card-content>
     <ion-card-subtitle class="info-usuario">Nombre</ion-card-subtitle>
-    <ion-card-subtitle class="valor-usuario">{{nombre}}</ion-card-subtitle>
+    <ion-card-subtitle class="valor-usuario">{{usuario.nombre}}</ion-card-subtitle>
     <ion-card-subtitle class="info-usuario">Apellidos</ion-card-subtitle>
-    <ion-card-subtitle class="valor-usuario">{{apellidos}}</ion-card-subtitle>
+    <ion-card-subtitle class="valor-usuario">{{usuario.apellidos}}</ion-card-subtitle>
     <ion-card-subtitle class="info-usuario">Edad</ion-card-subtitle>
-    <ion-card-subtitle class="valor-usuario">{{edad}} años</ion-card-subtitle>
+    <ion-card-subtitle class="valor-usuario">{{usuario.edad}} años</ion-card-subtitle>
   </ion-card-content>
 </ion-card>

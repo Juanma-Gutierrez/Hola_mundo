@@ -6,7 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { UserInfoComponent } from './user-info/user-info.component';
-
+import { PrimeraLetraApellidoPipe } from '../pipes/primera-letra-apellido.pipe';
 
 @NgModule({
   imports: [
@@ -15,6 +15,6 @@ import { UserInfoComponent } from './user-info/user-info.component';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, UserInfoComponent]
+  declarations: [HomePage, UserInfoComponent,PrimeraLetraApellidoPipe]
 })
 export class HomePageModule {}
