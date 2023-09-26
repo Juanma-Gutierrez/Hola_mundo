@@ -16,5 +16,5 @@ import { PrimeraLetraApellidoPipe } from '../pipes/primera-letra-apellido.pipe';
     HomePageRoutingModule
   ],
   declarations: [HomePage, UserInfoComponent,PrimeraLetraApellidoPipe]
-})
+ })
 export class HomePageModule {}
