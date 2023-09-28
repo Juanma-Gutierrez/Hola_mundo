@@ -29,24 +29,28 @@ export class HomePage implements OnInit {
         id: 1,
         nombre: "Eddar",
         apellidos: "Stark",
-        edad: 52
+        edad: 52,
+        favorito:true
       },
       {
         id: 2,
         nombre: "Robert",
         apellidos: "Baratheon",
-        edad: 64
+        edad: 64,
+        favorito:false
       },
       {
         id: 3,
         nombre: "Sansa",
         apellidos: "Stark Lannister",
-        edad: 24
+        edad: 24,
+        favorito:true
       }, {
         id: 4,
         nombre: "Cersei",
         apellidos: "Lannister",
-        edad: 41
+        edad: 41,
+        favorito:true
       }
     ]
 
@@ -57,7 +61,7 @@ export class HomePage implements OnInit {
         this._users.next(miUsuario)
         index++
       }
-    }, 1000)
+    }, 200)
   }
 
 }

@@ -1,4 +1,5 @@
 ion-card{
+    position:relative;
     width: 30vw;
     background-color: #1e1e1e;
 }
@@ -21,3 +22,8 @@ ion-card-title {
     color: rgb(137, 182, 197);
 }
 
+.heart{
+    position:absolute;
+    right: 25px;
+    top:25px;
+}
