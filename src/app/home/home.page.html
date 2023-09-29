@@ -9,7 +9,7 @@
 <ion-content [fullscreen]="true">
 
   <div class="tarjetas">
-    <app-user-info *ngFor="let miUsuario of users$ | async" [usuario]="miUsuario"></app-user-info>
+    <app-user-info *ngFor="let miUsuario of users$ | async" [usuario]="miUsuario" (onFavClicked)="onFavClicked(miUsuario,$event)"></app-user-info>
   </div>
   <div class="container">
     <ion-button [routerLink]="['/welcome']">Welcome</ion-button>
