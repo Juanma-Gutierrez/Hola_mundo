@@ -9,12 +9,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { PrimeraLetraApellidoPipe } from '../pipes/primera-letra-apellido.pipe';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    HomePageRoutingModule
-  ],
-  declarations: [HomePage, UserInfoComponent,PrimeraLetraApellidoPipe]
- })
+  imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule],
+  declarations: [HomePage, UserInfoComponent, PrimeraLetraApellidoPipe],
+})
 export class HomePageModule {}
