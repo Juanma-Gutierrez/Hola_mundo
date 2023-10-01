@@ -12,6 +12,6 @@
     <app-user-info *ngFor="let miUsuario of users$ | async" [usuario]="miUsuario" (onFavClicked)="onFavClicked(miUsuario,$event)"></app-user-info>
   </div>
   <div class="container">
-    <ion-button [routerLink]="['/welcome']">Welcome</ion-button>
+    <ion-button routerLink='/welcome'>Welcome</ion-button>
   </div>
 </ion-content>
