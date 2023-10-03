@@ -1,13 +1,11 @@
-<ion-card>
+<ion-card  button (click)="onCardClick()">
   <ion-card-header>
     <div class="avatar">
       <ion-avatar>
         <ion-img src="https://cdn-icons-png.flaticon.com/128/149/149071.png"></ion-img>
       </ion-avatar>
       <!--       <ion-card-title>{{usuario?.nombre}} {{usuario?.apellidos|uppercase|slice:0:1}}</ion-card-title> -->
-      <ion-button [routerLink]="['/welcome',usuario]" fill="clear">
         <ion-card-title>{{usuario?.nombre}} {{usuario?.apellidos|primeraLetraApellido}}</ion-card-title>
-      </ion-button>
       <ion-button class="fav-button" fill="clear" aria-label="Favorite" (click)="onFavClick($event)" class="heart">
         <ion-icon *ngIf="usuario?.favorito" slot="icon-only" size="large" color="danger" name="heart"
           aria-hidden="true"></ion-icon>
@@ -25,4 +23,9 @@
     <ion-card-subtitle class="info-usuario">Edad</ion-card-subtitle>
     <ion-card-subtitle class="valor-usuario">{{usuario?.edad}} años</ion-card-subtitle>
   </ion-card-content>
+
+  <ion-button fill="clear" aria-label="Delete" (click)="onDeleteClick($event)" class="trash">
+    <ion-icon  slot="icon-only" size="medium" color="medium" name="trash"
+      aria-hidden="true"></ion-icon>
+  </ion-button>
 </ion-card>

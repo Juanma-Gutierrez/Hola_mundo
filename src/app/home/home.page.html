@@ -1,7 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Home
+      <ion-col>Home</ion-col>
+      <ion-col>
+        <ion-button routerLink='/welcome'>Welcome</ion-button>
+        <ion-button>Favoritos</ion-button>
+      </ion-col>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +13,8 @@
 <ion-content [fullscreen]="true">
 
   <div class="tarjetas">
-    <app-user-info *ngFor="let miUsuario of users$ | async" [usuario]="miUsuario" (onFavClicked)="onFavClicked(miUsuario,$event)"></app-user-info>
+    <app-user-info *ngFor="let miUsuario of users.users$ | async" [usuario]="miUsuario"
+      (onFavClicked)="onFavClicked(miUsuario,$event)" (onDeleteClicked)="onDeleteClicked(miUsuario)"></app-user-info>
   </div>
-  <div class="container">
-    <ion-button routerLink='/welcome'>Welcome</ion-button>
-  </div>
+
 </ion-content>

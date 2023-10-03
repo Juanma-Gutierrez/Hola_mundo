@@ -11,15 +11,26 @@ export class UserInfoComponent implements OnInit {
   @Input() usuario?: User | null;
   @Output() onFavClicked: EventEmitter<UserInfoFavClicked> =
     new EventEmitter<UserInfoFavClicked>();
+  @Output() onCardClicked: EventEmitter<void> = new EventEmitter<void>();
+  @Output() onDeleteClicked: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() {}
 
   ngOnInit() {}
-  onFavClick(event?: any) {
+
+  onFavClick(event: any) {
     this.onFavClicked.emit({
-      fav: !(this.usuario?.favorito ?? false), // Devolvemos el estado contrario al que tenemos
+      fav: !(this.usuario?.favorito ?? false),
     });
     event.stopPropagation();
-    // if (this.usuario) this.usuario.favorito = !this.usuario?.favorito;
+  }
+
+  onCardClick() {
+    this.onCardClicked.emit();
+  }
+
+  onDeleteClick(event: any) {
+    this.onDeleteClicked.emit();
+    event.stopPropagation();
   }
 }
