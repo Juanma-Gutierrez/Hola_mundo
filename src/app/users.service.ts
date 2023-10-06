@@ -25,9 +25,24 @@ export class UsersService {
           { id: 5, name: 'Lydia', surname: 'mina rojo', age: 11, fav: false },
         ];
         this._users.next(users); // Modifica el BehaviorSubject
-        observer.next(users);    // Modifica el observable observer
-        observer.complete();     // Completamos el observable observer
+        observer.next(users); // Modifica el observable observer
+        observer.complete(); // Completamos el observable observer
       }, 500);
+    });
+  }
+
+  public deleteUser(user: User): Observable<User[]> {
+    return new Observable((observer) => {
+      var users = [...this._users.value];
+      var index = users.findIndex((u) => u.id == user.id);
+      if (index < 0) {
+        observer.error('Error');
+      } else {
+        users = [...users.slice(0, index), ...users.slice(index + 1)];
+        this._users.next(users);
+        observer.next(users);
+      }
+      observer.complete();
     });
   }
 }

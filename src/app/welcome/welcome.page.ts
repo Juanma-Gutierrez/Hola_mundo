@@ -35,12 +35,4 @@ export class WelcomePage implements OnInit {
       toast.present();
     }
   }
-
-  getId() {
-    if (this.activatedRoute) {
-      console.log('entra');
-      return;
-    }
-    return null;
-  }
 }

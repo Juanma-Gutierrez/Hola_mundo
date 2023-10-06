@@ -31,6 +31,7 @@ export class UserInfoComponent implements OnInit {
   }
 
   onDeleteClick(event: Event) {
+    console.log('onDeleteClick');
     // Emite que se ha pulsado el botón borrar
     this.onDeleteClicked.emit();
     event.stopPropagation();

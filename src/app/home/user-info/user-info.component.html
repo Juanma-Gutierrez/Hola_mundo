@@ -20,5 +20,9 @@
       <ion-card-subtitle class="label-user">Edad</ion-card-subtitle>
       <ion-card-subtitle class="info-user">{{user?.age}} años</ion-card-subtitle>
     </ion-card-content>
+    
+    <ion-button class="delete-icon" fill="clear" aria-label="Delete" (click)="onDeleteClick($event)">
+        <ion-icon size="large" color="medium" name="trash" aria-hidden="true"></ion-icon>
+      </ion-button>
   </ion-card>
 </div>

@@ -63,5 +63,28 @@ export class HomePage implements OnInit {
 
   onDeleteClicked(user: User) {
     console.log('onDeleteClicked');
+    var _user: User = { ...user };
+    this.usersService.deleteUser(_user).subscribe({
+      next: () => {
+        //Notificamos con un Toast que se ha pulsado
+        const options: ToastOptions = {
+          message:
+            `User ` +
+            user.name.toUpperCase() +
+            ' ' +
+            user.surname.toUpperCase() +
+            ` deleted`, //mensaje del toast
+          duration: 1000, // 1 segundo
+          position: 'bottom', // el toast se situa en la parte inferior
+          color: 'danger', // color del toast
+          cssClass: 'fav-ion-toast', //Una clase que podemos poner en global.scss para configurar el ion-toast
+        };
+        //creamos el toast
+        this.toast.create(options).then((toast) => toast.present());
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+    });
   }
 }
