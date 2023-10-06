@@ -1,20 +1,21 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      <ion-col>Home</ion-col>
-      <ion-col>
-        <ion-button routerLink='/welcome'>Welcome</ion-button>
-        <ion-button>Favoritos</ion-button>
-      </ion-col>
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<div class="container full-width full-height">
+  <app-user-info *ngFor="let user of
+  (usersService.users$ | async) |
+  favs:(favoriteService.favs$ |async)"
+  [user]="user"
+    (onFavClicked)="onFavClicked(user, $event)"
+    (onDeleteClicked)="onDeleteClicked(user)"
+    (onCardClicked)="onCardClicked(user)">
 
-  <div class="tarjetas">
-    <app-user-info *ngFor="let miUsuario of users.users$ | async" [usuario]="miUsuario"
-      (onFavClicked)="onFavClicked(miUsuario,$event)" (onDeleteClicked)="onDeleteClicked(miUsuario)"></app-user-info>
-  </div>
+  </app-user-info>
+</div>
 
-</ion-content>
+<ion-loading message="Cargando..." [isOpen]="loading"></ion-loading>

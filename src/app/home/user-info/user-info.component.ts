@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { User } from '../user';
-import { UserInfoFavClicked } from '../user-info-fav-clicked';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { User } from './user';
+import { UserInfoFavClicked } from './user-info-fav-clicked';
 
 @Component({
   selector: 'app-user-info',
@@ -8,7 +8,8 @@ import { UserInfoFavClicked } from '../user-info-fav-clicked';
   styleUrls: ['./user-info.component.scss'],
 })
 export class UserInfoComponent implements OnInit {
-  @Input() usuario?: User | null;
+  @Input() user: User | null = null;
+
   @Output() onFavClicked: EventEmitter<UserInfoFavClicked> =
     new EventEmitter<UserInfoFavClicked>();
   @Output() onCardClicked: EventEmitter<void> = new EventEmitter<void>();
@@ -16,20 +17,21 @@ export class UserInfoComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
-  onFavClick(event: any) {
-    this.onFavClicked.emit({
-      fav: !(this.usuario?.favorito ?? false),
-    });
+  onFavClick(event: Event) {
+    // Cuando se ejecuta onFavClick emite un fav con el valor true o false correspondiente
+    this.onFavClicked.emit({ fav: !(this.user?.fav ?? false) });
     event.stopPropagation();
   }
 
   onCardClick() {
+    // Emite que se ha pulsado la tarjeta
     this.onCardClicked.emit();
   }
 
-  onDeleteClick(event: any) {
+  onDeleteClick(event: Event) {
+    // Emite que se ha pulsado el botón borrar
     this.onDeleteClicked.emit();
     event.stopPropagation();
   }

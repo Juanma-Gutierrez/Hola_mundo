@@ -1,9 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      <ion-col>Welcome {{nombre}} </ion-col>
+      <ion-col>Welcome {{user.name|uppercase}}</ion-col>
       <ion-col>
-        <ion-button routerLink="/home">Home</ion-button>
+        <ion-button routerLink='/home'>Home</ion-button>
       </ion-col>
     </ion-title>
   </ion-toolbar>

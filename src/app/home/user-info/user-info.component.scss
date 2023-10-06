@@ -1,35 +1,31 @@
-ion-card{
-    position:relative;
-    width: 30vw;
-    background-color: #1e1e1e;
+.card {
+  width: 30vw;
+  background-color: #cdd2d6;
+  padding: 20px;
 }
 
-.avatar{
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.fav-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
-ion-card-title {
-  color: #5e66f5;
+.avatar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.valor-usuario {
+.info-user {
   margin-left: 20px;
 }
 
-.info-usuario{
-    color: rgb(137, 182, 197);
+.label-user {
+  color: rgb(67, 90, 98);
 }
 
-.heart{
-    position:absolute;
-    right: 25px;
-    top:25px;
-}
-
-.trash{
-    position:absolute;
-    right:25px;
-    bottom:25px;
+.heart {
+  position: absolute;
+  right: 25px;
+  top: 25px;
 }

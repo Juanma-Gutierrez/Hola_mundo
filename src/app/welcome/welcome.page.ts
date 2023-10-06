@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastController, ToastOptions } from '@ionic/angular';
+import { User } from '../home/user-info/user';
 
 @Component({
   selector: 'app-welcome',
@@ -7,15 +9,38 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./welcome.page.scss'],
 })
 export class WelcomePage implements OnInit {
-  nombre: string | null = '';
+  @Input() public user!: User;
 
-  // Constructor de la página destino Welcome
-  constructor(private _route: ActivatedRoute) {
-    console.log(this._route.snapshot.paramMap.get('id'));
+  activatedRoute?: ActivatedRoute;
+  
+  constructor(
+    private router: Router,
+    private toast: ToastController,
+    activatedRoute: ActivatedRoute
+  ) {
+    this.activatedRoute = activatedRoute;
   }
 
-  ngOnInit() {
-    this.nombre = this._route.snapshot.paramMap.get('nombre');
-    console.log(this.nombre);
+  async ngOnInit() {
+    if (this.activatedRoute) {
+      const id = this.activatedRoute.snapshot.paramMap.get('id');
+      this.user = JSON.parse(id!);
+      const options: ToastOptions = {
+        message: 'Welcome ' + this.user.name.toUpperCase() + " " + this.user.surname.toUpperCase(),
+        duration: 2000,
+        position: 'bottom',
+        color: 'tertiary',
+      };
+      const toast = await this.toast.create(options);
+      toast.present();
+    }
+  }
+
+  getId() {
+    if (this.activatedRoute) {
+      console.log('entra');
+      return;
+    }
+    return null;
   }
 }

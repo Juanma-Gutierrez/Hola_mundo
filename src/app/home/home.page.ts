@@ -1,9 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { User } from './user';
-import { UserInfoFavClicked } from './user-info-fav-clicked';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { UsersService } from '../users.service';
+import { FavoriteService } from '../favorite.service';
+import { User } from './user-info/user';
 import { ToastController, ToastOptions } from '@ionic/angular';
-import { UsersService } from '../users-service.service';
+import { zip } from 'rxjs';
+import { UserInfoFavClicked } from './user-info/user-info-fav-clicked';
+import { TitleCasePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,72 +14,54 @@ import { UsersService } from '../users-service.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  public loading: boolean = false;
-
+  loading = true;
   constructor(
-    private router: Router,
     private toast: ToastController,
-    public users: UsersService
+    public usersService: UsersService,
+    public favoriteService: FavoriteService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
+    // Cargo los usuarios del servicio en this.users, cuando la suscripción
+    // recibe los datos modifica el valor de loading a falso
     this.loading = true;
-    this.users.getAll().subscribe((users) => {
-      this.loading = false;
-    });
+    zip(this.usersService.getAll(), this.favoriteService.getAll()).subscribe(
+      () => {
+        this.loading = false;
+      }
+    );
+    this.favoriteService.getAll().subscribe();
   }
-  public onFavClicked(user: User, event: UserInfoFavClicked) {
-    var _user: User = { ...user };
-    _user.favorito = event.fav ?? false;
-    this.users.updateUser(_user).subscribe({
-      next: (user) => {
+
+  onFavClicked(user: User, event: UserInfoFavClicked) {
+    console.log('onFavClicked');
+    var observable = event?.fav
+      ? this.favoriteService.addFavorite(user.id)
+      : this.favoriteService.deleteFavorite(user.id);
+    observable.subscribe({
+      next: (_) => {
         const options: ToastOptions = {
-          message: `${_user.nombre} ${_user.apellidos} ${
-            event.fav ? 'added' : 'removed'
-          } ${event.fav ? 'to' : 'from'} favourites`,
+          message: `User ${user.name} ${user.surname} ${
+            event.fav ? 'added to' : 'removed from'
+          } favourites`,
           duration: 1000,
           position: 'bottom',
           color: event.fav ? 'success' : 'danger',
-          cssClass: 'fav-ion-toast',
-        };
-
-        this.toast.create(options).then((toast) => toast.present());
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
-
-  public onDeleteClicked(user: User) {
-    var _user: User = { ...user };
-
-    this.users.deleteUser(_user).subscribe({
-      next: (user) => {
-        const options: ToastOptions = {
-          message: ` ${_user.nombre} ${_user.apellidos} deleted`,
-          duration: 1000,
-          position: 'bottom',
-          color: 'danger',
-          cssClass: 'fav-ion-toast',
         };
         this.toast.create(options).then((toast) => toast.present());
       },
-      error: (err) => {
-        console.log(err);
-      },
+      error: (err) => console.log(err),
     });
   }
 
-  public async onCardClicked() {
-    const options: ToastOptions = {
-      message: 'User clicked the card',
-      duration: 1000,
-      position: 'bottom',
-      color: 'tertiary',
-      cssClass: 'card-ion-toast',
-    };
-    const toast = await this.toast.create(options);
-    toast.present();
+  async onCardClicked(user: User) {
+    console.log('onCardClicked');
+    const json = JSON.stringify(user);
+    this.router.navigate(['/welcome', { id: json }]);
+  }
+
+  onDeleteClicked(user: User) {
+    console.log('onDeleteClicked');
   }
 }
