@@ -7,13 +7,13 @@
 </ion-header>
 
 <div class="container full-width full-height">
-  <app-user-info *ngFor="let user of
-  (usersService.users$ | async) |
+  <app-user-info class="cards-container"
+  *ngFor="let user of (usersService.users$ | async) |
   favs:(favoriteService.favs$ |async)"
   [user]="user"
     (onFavClicked)="onFavClicked(user, $event)"
     (onDeleteClicked)="onDeleteClicked(user)"
-    (onCardClicked)="onCardClicked(user)">
+    (onCardClicked)="onCardClicked(user)" >
 
   </app-user-info>
 </div>
