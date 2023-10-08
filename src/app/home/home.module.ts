@@ -6,17 +6,11 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { UserInfoComponent } from './user-info/user-info.component';
-import { UsersService } from '../users.service';
 import { FavsPipe } from '../favs.pipe';
-
+import { HighlightDirective } from '../directive/highlight.directive';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    HomePageRoutingModule,
-  ],
-  declarations: [HomePage, UserInfoComponent, FavsPipe]
+  imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule],
+  declarations: [HomePage, UserInfoComponent, FavsPipe, HighlightDirective],
 })
 export class HomePageModule {}

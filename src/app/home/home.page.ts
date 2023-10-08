@@ -5,7 +5,6 @@ import { User } from './user-info/user';
 import { ToastController, ToastOptions } from '@ionic/angular';
 import { zip } from 'rxjs';
 import { UserInfoFavClicked } from './user-info/user-info-fav-clicked';
-import { TitleCasePipe } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
