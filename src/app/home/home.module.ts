@@ -8,9 +8,16 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { FavsPipe } from '../favs.pipe';
 import { HighlightDirective } from '../directive/highlight.directive';
+import { UpperCamelCasePipe } from '../pipes/upper-camel-case.pipe';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule],
-  declarations: [HomePage, UserInfoComponent, FavsPipe, HighlightDirective],
+  declarations: [
+    HomePage,
+    UserInfoComponent,
+    FavsPipe,
+    HighlightDirective,
+    UpperCamelCasePipe,
+  ],
 })
 export class HomePageModule {}

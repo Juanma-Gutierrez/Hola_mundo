@@ -6,6 +6,7 @@ import { ToastController, ToastOptions } from '@ionic/angular';
 import { zip } from 'rxjs';
 import { UserInfoFavClicked } from './user-info/user-info-fav-clicked';
 import { Router } from '@angular/router';
+import { UpperCamelCasePipe } from '../pipes/upper-camel-case.pipe';
 
 @Component({
   selector: 'app-home',
@@ -41,7 +42,7 @@ export class HomePage implements OnInit {
     observable.subscribe({
       next: (_) => {
         const options: ToastOptions = {
-          message: `User ${user.name} ${user.surname} ${
+          message: `User ${user.name}  ${user.surname} ${
             event.fav ? 'added to' : 'removed from'
           } favourites`,
           duration: 1000,

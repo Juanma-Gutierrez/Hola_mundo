@@ -19,7 +19,7 @@ export class UsersService {
       setTimeout(() => {
         var users = [
           { id: 1, name: 'Juan A.', surname: 'gil Robles', age: 46, fav: true },
-          { id: 2, name: 'Eva', surname: 'marcos gómez', age: 45, fav: true },
+          { id: 2, name: 'EVA', surname: 'marcos gómez', age: 45, fav: true },
           { id: 3, name: 'juan', surname: 'de Valencia', age: 4, fav: false },
           { id: 4, name: 'Mª Mar', surname: 'diaz gil', age: 46, fav: true },
           { id: 5, name: 'Lydia', surname: 'mina rojo', age: 11, fav: false },
