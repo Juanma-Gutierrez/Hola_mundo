@@ -12,7 +12,7 @@ export class WelcomePage implements OnInit {
   @Input() public user!: User;
 
   activatedRoute?: ActivatedRoute;
-  
+
   constructor(
     private router: Router,
     private toast: ToastController,
@@ -26,7 +26,11 @@ export class WelcomePage implements OnInit {
       const id = this.activatedRoute.snapshot.paramMap.get('id');
       this.user = JSON.parse(id!);
       const options: ToastOptions = {
-        message: 'Welcome ' + this.user.name.toUpperCase() + " " + this.user.surname.toUpperCase(),
+        message:
+          'Welcome ' +
+          this.user.name.toUpperCase() +
+          ' ' +
+          this.user.surname.toUpperCase(),
         duration: 2000,
         position: 'bottom',
         color: 'tertiary',

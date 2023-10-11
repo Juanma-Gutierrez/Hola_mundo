@@ -1,12 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UsersService } from '../users.service';
-import { FavoriteService } from '../favorite.service';
+import { UsersService } from './user-info/users.service';
+import { FavoriteService } from './favorite/favorite.service';
 import { User } from './user-info/user';
 import { ToastController, ToastOptions } from '@ionic/angular';
-import { zip } from 'rxjs';
+import { Observable, zip } from 'rxjs';
 import { UserInfoFavClicked } from './user-info/user-info-fav-clicked';
 import { Router } from '@angular/router';
-import { UpperCamelCasePipe } from '../pipes/upper-camel-case.pipe';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +14,19 @@ import { UpperCamelCasePipe } from '../pipes/upper-camel-case.pipe';
 })
 export class HomePage implements OnInit {
   loading = true;
+  filteredUsers: User[] = [];
+
   constructor(
     private toast: ToastController,
     public usersService: UsersService,
     public favoriteService: FavoriteService,
     private router: Router
-  ) {}
+  ) {
+    this.usersService.users$.subscribe((users) => {
+      // Filtrar los usuarios con el atributo 'fav' como true.
+      this.filteredUsers = users.filter((user) => user.fav === true);
+    });
+  }
 
   ngOnInit(): void {
     // Cargo los usuarios del servicio en this.users, cuando la suscripción
@@ -51,8 +57,13 @@ export class HomePage implements OnInit {
         };
         this.toast.create(options).then((toast) => toast.present());
       },
-      error: (err) => console.log(err),
+      error: (err) => console.log('Error en onFavClicked' + err),
     });
+  }
+
+  onFavSmallCardClicked(id: number) {
+    var user = this.usersService.getUser(id);
+    this.onFavClicked(user, { fav: false });
   }
 
   async onCardClicked(user: User) {
@@ -77,14 +88,17 @@ export class HomePage implements OnInit {
           duration: 1000, // 1 segundo
           position: 'bottom', // el toast se situa en la parte inferior
           color: 'danger', // color del toast
-          cssClass: 'fav-ion-toast', //Una clase que podemos poner en global.scss para configurar el ion-toast
         };
         //creamos el toast
         this.toast.create(options).then((toast) => toast.present());
       },
       error: (err: any) => {
-        console.log(err);
+        console.log('Error en onDeleteClicked' + err);
       },
     });
+  }
+
+  filterFavourites(user: any): boolean {
+    return user.fav === true;
   }
 }

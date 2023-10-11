@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Fav } from './home/user-info/fav';
+import { Fav } from './fav';
+import { UsersService } from '../user-info/users.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class FavoriteService {
   private _favs: BehaviorSubject<Fav[]> = new BehaviorSubject<Fav[]>([]);
   public favs$: Observable<Fav[]> = this._favs.asObservable();
 
-  constructor() {}
+  constructor(public userService: UsersService) {}
 
   getAll(): Observable<Fav[]> {
     // observer es el observable que va a devolver la función getAll()
@@ -27,7 +28,7 @@ export class FavoriteService {
     return new Observable((observer) => {
       let _favs = [...this._favs.value]; // hace una copia del array
       let _fav = { id: uid }; // Añade uid al elemento _fav
-      console.log(_favs.length);
+      console.log('addFavorite length ' + _favs.length);
       _favs.push(_fav); // Añade _fav al nuevo array de favoritos
       this._favs.next(_favs); // Añado el nuevo array al behaviorsubject _favs
       observer.next(_fav); // Comunica el cambio en el favorito
@@ -42,7 +43,7 @@ export class FavoriteService {
       var index = _favs.findIndex((fav) => fav.id == uid);
       if (index < 0) {
         // si la posición  es inferior a 0
-        observer.error(console.log('rror en el id'));
+        observer.error(console.log('Error en el id'));
       } else {
         // Recorta de _favs el elemento en la posición index
         _favs = [..._favs.slice(0, index), ..._favs.slice(index + 1)];

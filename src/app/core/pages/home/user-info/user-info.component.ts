@@ -34,6 +34,8 @@ export class UserInfoComponent implements OnInit {
     console.log('onDeleteClick');
     // Emite que se ha pulsado el botón borrar
     this.onDeleteClicked.emit();
+    // También emite para actualizar la lista
+    this.onFavClicked.emit();
     event.stopPropagation();
   }
 }

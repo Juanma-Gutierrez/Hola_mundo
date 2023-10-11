@@ -1,0 +1,6 @@
+<ion-card class="card">
+  <span class="info-user">{{user.name | upperCamelCase}} {{user.surname | upperCamelCase}}</span>
+  <ion-button class="fav-icon" fill="clear" aria-label="Favorite" (click)="onDeleteFavClick($event)">
+    <ion-icon size="large" color="danger" name="close-outline" aria-hidden="true"></ion-icon>
+  </ion-button>
+</ion-card>

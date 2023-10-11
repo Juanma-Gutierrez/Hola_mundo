@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="container full-width full-height">
+  <div class="percent-80 container">
+    <app-user-info class="cards" appHighlight *ngFor="let user of (usersService.users$ | async) |
+  favs:(favoriteService.favs$ |async)" [user]="user" (onFavClicked)="onFavClicked(user, $event)"
+      (onDeleteClicked)="onDeleteClicked(user)" (onCardClicked)="onCardClicked(user)">
+    </app-user-info>
+  </div>
+  <div class="percent-20 container">
+    <app-user-small-card *ngFor="let favorite of favoriteService.favs$ |async" [id]="favorite.id"
+      (onFavClicked)="onFavSmallCardClicked(favorite.id)">
+    </app-user-small-card>
+  </div>
+</div>
+
+<ion-loading message="cargando..." [isOpen]="loading"></ion-loading>
