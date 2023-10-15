@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { UsersService } from './user-info/users.service';
 import { FavoriteService } from './favorite/favorite.service';
 import { User } from './user-info/user';
-import { ToastController, ToastOptions } from '@ionic/angular';
+import { IonModal, ToastController, ToastOptions } from '@ionic/angular';
 import { Observable, zip } from 'rxjs';
 import { UserInfoFavClicked } from './user-info/user-info-fav-clicked';
 import { Router } from '@angular/router';
+import { OverlayEventDetail } from '@ionic/core/components';
 
 @Component({
   selector: 'app-home',
@@ -13,8 +14,12 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  @ViewChild(IonModal) modal?: IonModal;
   loading = true;
   filteredUsers: User[] = [];
+  message =
+    'This modal example uses triggers to automatically open a modal when the button is clicked.';
+  name?: string;
 
   constructor(
     private toast: ToastController,
@@ -29,7 +34,7 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit(): void {
-    // Cargo los usuarios del servicio en this.users, cuando la suscripción
+    // Carga los usuarios del servicio en this.users, cuando la suscripción
     // recibe los datos modifica el valor de loading a falso
     this.loading = true;
     zip(this.usersService.getAll(), this.favoriteService.getAll()).subscribe(
@@ -100,5 +105,22 @@ export class HomePage implements OnInit {
 
   filterFavourites(user: any): boolean {
     return user.fav === true;
+  }
+
+  cancel() {
+    if (this.modal)
+    this.modal.dismiss(null, 'cancel');
+  }
+
+  confirm() {
+    if (this.modal)
+    this.modal.dismiss(this.name, 'confirm');
+  }
+
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'confirm') {
+      this.message = `Hello, ${ev.detail.data}!`;
+    }
   }
 }
