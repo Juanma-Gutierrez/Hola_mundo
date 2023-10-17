@@ -67,8 +67,9 @@ export class HomePage implements OnInit {
   }
 
   onFavSmallCardClicked(id: number) {
-    var user = this.usersService.getUser(id);
-    this.onFavClicked(user, { fav: false });
+    var myUser: User;
+    this.usersService.getUser(id).subscribe((user) => (myUser = user));
+    this.onFavClicked(myUser!, { fav: false });
   }
 
   async onCardClicked(user: User) {
@@ -107,20 +108,4 @@ export class HomePage implements OnInit {
     return user.fav === true;
   }
 
-  cancel() {
-    if (this.modal)
-    this.modal.dismiss(null, 'cancel');
-  }
-
-  confirm() {
-    if (this.modal)
-    this.modal.dismiss(this.name, 'confirm');
-  }
-
-  onWillDismiss(event: Event) {
-    const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    if (ev.detail.role === 'confirm') {
-      this.message = `Hello, ${ev.detail.data}!`;
-    }
-  }
 }

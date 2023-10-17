@@ -57,10 +57,13 @@ export class UsersService {
     });
   }
 
-  getUser(id: number): User {
-    // Localizamos el usuario pasado por parámetro
-    var index = this._users.value.findIndex((u) => u.id == id);
-    // Devolvemos el usuario localizado por el índice
-    return this._users.value[index];
+  getUser(id: number): Observable<User> {
+    return new Observable((observer) => {
+      // Localizamos el usuario pasado por parámetro
+      var index = this._users.value.findIndex((u) => u.id == id);
+      // Devolvemos el usuario localizado por el índice
+      observer.next(this._users.value[index]);
+      observer.complete();
+    });
   }
 }

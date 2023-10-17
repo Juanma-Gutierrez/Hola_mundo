@@ -26,29 +26,3 @@
 </div>
 
 <ion-loading message="cargando..." [isOpen]="loading"></ion-loading>
-
-
-<ion-modal trigger="open-modal"  (willDismiss)="onWillDismiss($event)">
-  <ng-template>
-    <ion-header>
-      <ion-toolbar>
-
-        <ion-title>New user</ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
-          <ion-button (click)="cancel()">Cancel</ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">
-      <ion-item>
-        <ion-input label="Enter name" labelPlacement="stacked" type="text" placeholder="User name"
-          [(ngModel)]="name"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input label="Enter surname" labelPlacement="stacked" type="text" placeholder="User surname"
-          [(ngModel)]="name"></ion-input>
-      </ion-item>
-    </ion-content>
-  </ng-template>
-</ion-modal>

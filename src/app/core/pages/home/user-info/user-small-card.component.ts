@@ -20,7 +20,9 @@ export class UserSmallCardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.user = this.usersService.getUser(this.id);
+    var myUser: User;
+    this.usersService.getUser(this.id).subscribe((u) => (myUser = u));
+    this.user = myUser!;
   }
 
   onDeleteFavClick(event: Event) {
