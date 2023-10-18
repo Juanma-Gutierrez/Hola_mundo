@@ -1,12 +1,12 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { UsersService } from './user-info/users.service';
-import { FavoriteService } from './favorite/favorite.service';
-import { User } from './user-info/user';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { UsersService } from '../../core/services/users.service';
+import { FavoriteService } from '../../core/services/favorite.service';
+import { User } from '../../core/interfaces/user';
 import { IonModal, ToastController, ToastOptions } from '@ionic/angular';
-import { Observable, zip } from 'rxjs';
-import { UserInfoFavClicked } from './user-info/user-info-fav-clicked';
+import { zip } from 'rxjs';
+import { UserInfoFavClicked } from '../../shared/components/user-info/user-info-fav-clicked';
 import { Router } from '@angular/router';
-import { OverlayEventDetail } from '@ionic/core/components';
+import { UpperCamelCasePipe } from 'src/app/shared/pipes/upper-camel-case.pipe';
 
 @Component({
   selector: 'app-home',
@@ -40,6 +40,7 @@ export class HomePage implements OnInit {
     zip(this.usersService.getAll(), this.favoriteService.getAll()).subscribe(
       () => {
         this.loading = false;
+        console.log("ruta de la foto: " );
       }
     );
     this.favoriteService.getAll().subscribe();
@@ -53,7 +54,7 @@ export class HomePage implements OnInit {
     observable.subscribe({
       next: (_) => {
         const options: ToastOptions = {
-          message: `User ${user.name}  ${user.surname} ${
+          message: `User ${user.name.toUpperCase()} ${user.surname.toUpperCase()} ${
             event.fav ? 'added to' : 'removed from'
           } favourites`,
           duration: 1000,
@@ -107,5 +108,4 @@ export class HomePage implements OnInit {
   filterFavourites(user: any): boolean {
     return user.fav === true;
   }
-
 }

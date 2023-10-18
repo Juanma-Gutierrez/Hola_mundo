@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Fav } from './fav';
-import { UsersService } from '../user-info/users.service';
+import { Fav } from '../interfaces/fav';
+import { UsersService } from './users.service';
 
 @Injectable({
   providedIn: 'root',

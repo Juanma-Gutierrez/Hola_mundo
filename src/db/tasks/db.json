@@ -1,0 +1,86 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Jon",
+      "surname": "Snow",
+      "age": 28
+    },
+    {
+      "id": 2,
+      "name": "Eddar",
+      "surname": "Stark",
+      "age": 57
+    },
+    {
+      "id": 3,
+      "name": "Cersei",
+      "surname": "Lannister",
+      "age": 40
+    },
+    {
+      "name": "Arya",
+      "surname": "Stark",
+      "age": 17,
+      "id": 4
+    },
+    {
+      "name": "Danaerys",
+      "id": 5,
+      "surname": "Targaryan",
+      "age": 19
+    },
+    {
+      "name": "Rob",
+      "surname": "Stark",
+      "age": 27,
+      "id": 6
+    },
+    {
+      "name": "Prueba1",
+      "surname": "prueba",
+      "age": 20,
+      "id": 7
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "name": "hacer tareas"
+    },
+    {
+      "id": 2,
+      "name": "limpiar"
+    },
+    {
+      "id": 3,
+      "name": "cambiar bombilla"
+    }
+  ],
+  "assignments": [
+    {
+      "user_id": 1,
+      "task_id": 1
+    },
+    {
+      "user_id": 2,
+      "task_id": 1
+    },
+    {
+      "user_id": 3,
+      "task_id": 3
+    },
+    {
+      "user_id": 2,
+      "task_id": 2
+    },
+    {
+      "user_id": 1,
+      "task_id": 2
+    },
+    {
+      "user_id": 3,
+      "task_id": 1
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { User } from '../pages/home/user-info/user';
-import { Fav } from '../pages/home/favorite/fav';
+import { Fav } from 'src/app/core/interfaces/fav';
+import { User } from 'src/app/core/interfaces/user';
 
 @Pipe({
   name: 'favs',
@@ -17,6 +17,7 @@ export class FavsPipe implements PipeTransform {
         name: u.name,
         surname: u.surname,
         age: u.age,
+        photo: u.photo,
         // en fav graba true si encuentra el id del usuario
         // p es previo, f es favorito
         fav: favs?.reduce((p, f) => p || f.id == u.id, false) ?? false,

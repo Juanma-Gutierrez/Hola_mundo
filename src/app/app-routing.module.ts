@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./core/pages/home/home.module').then((m) => m.HomePageModule),
+      import('./pages/home/home.module').then((m) => m.HomePageModule),
   },
   {
     path: '',
@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: 'welcome',
     loadChildren: () =>
-      import('./core/pages/welcome/welcome.module').then((m) => m.WelcomePageModule),
+      import('./pages/welcome/welcome.module').then((m) => m.WelcomePageModule),
   },
 ];
 

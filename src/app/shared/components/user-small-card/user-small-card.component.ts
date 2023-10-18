@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { User } from './user';
-import { UserInfoFavClicked } from './user-info-fav-clicked';
-import { FavoriteService } from '../favorite/favorite.service';
-import { UsersService } from './users.service';
+import { User } from '../../../core/interfaces/user';
+import { UserInfoFavClicked } from '../user-info/user-info-fav-clicked';
+import { FavoriteService } from '../../../core/services/favorite.service';
+import { UsersService } from '../../../core/services/users.service';
 
 @Component({
   selector: 'app-user-small-card',

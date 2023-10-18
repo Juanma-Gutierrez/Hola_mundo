@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController, ToastOptions } from '@ionic/angular';
-import { User } from '../home/user-info/user';
+import { User } from '../../core/interfaces/user';
 
 @Component({
   selector: 'app-welcome',
